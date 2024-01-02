@@ -2,12 +2,17 @@ let questionIndex = 0;
 
 const questions = [
     {
-        q:"How do we create an object?",
-        a:["Square Brackets","Double Quotes","Curly Braces"],
-        c:"Curly Braces"
+        q:"What is the most popular dice used in Dungeons and Dragons?",
+        a:["d10","d100","d6", "d20"],
+        c:"d20"
     },
     {
-
+        q:"What is the name of the world for the Forgotten Realms?",
+        a:["Toril", "Oerth", "Fentir", "Gallaron"],
+        c:"Toril"
+    },
+    {
+        q: ""
     }
 ]
 // Current Question is
