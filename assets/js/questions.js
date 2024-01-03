@@ -1,4 +1,6 @@
-var startbtn = document.querySelector("#startbtn");
+var timetxt = document.querySelector("#timetxt");
+var qtxt = document.querySelector("#qtxt");
+var atxt = document.querySelector("#atxt");
 let questionIndex = 0;
 let highscore = 0;
 let timeleft= 80;
@@ -44,23 +46,37 @@ const questions = [
         a:["Ancient Romans", "Ancient Chinese", "Ancient Persians", "Ancient Egyptians"],
         c:"Ancient Egyptians"
     }
-]    
+];    
 
-
-startbtn.addEventListener("push", function() {
-    // Current Question is
-    questions[questionIndex].q
-    // Current answers 
-    for (let index = 0; index < questions[questionIndex].a.length; index++) {
-    // be each answer
-    const element = questions[questionIndex].a[index];  
+function timer() {
+    timeleft--;
+    timetxt.textContent = timeleft;
 }
-})
 
-if (questions.a === questions.c) {
-    highscore == highscore + 2;
-    // append a correct meesage to Questions html
-} else {
-    timeleft == timeleft - 10;
-    // append a incorret message to questions html
-};
+function disquestion() {
+    var qout = questions[Math.floor(Math.random()*questions.length)];
+    qtxt.textContent = qout.q;
+    atxt.textContent = qout.a;
+}
+function initfunction() {
+    timer();
+    disquestion();
+}
+
+//    // Current Question is
+// questions[questionIndex].q
+// Current answers 
+
+// const element = questions[questionIndex].q[index];  
+
+
+// Current Question is
+questions[questionIndex].q
+// Current answers 
+for (let index = 0; index < questions[questionIndex].a.length; index++) {
+    // be each answer
+    const element = questions[questionIndex].a[index];
+    
+}
+
+window.onload = initfunction;
