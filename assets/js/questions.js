@@ -56,12 +56,26 @@ function timer() {
 function disquestion() {
     var qout = questions[Math.floor(Math.random()*questions.length)];
     qtxt.textContent = qout.q;
-    atxt.textContent = qout.a;
+    for (var i = 0; i < qout.a.length; i++) {
+        var poss = document.createElement('button');
+        poss.innerText = qout.a[i];
+        atxt.appendChild(poss);
+    }
 }
+
+function checkans() {
+    console.log(1);
+}
+
+var possbtn = document.querySelectorAll("button");
+
+
 function initfunction() {
     timer();
     disquestion();
 }
+
+
 
 //    // Current Question is
 // questions[questionIndex].q
@@ -80,3 +94,5 @@ for (let index = 0; index < questions[questionIndex].a.length; index++) {
 }
 
 window.onload = initfunction;
+
+possbtn.addEventListener("click", checkans);
