@@ -1,6 +1,7 @@
 var timetxt = document.querySelector("#timetxt");
 var qtxt = document.querySelector("#qtxt");
 var atxt = document.querySelector("#atxt");
+var score = document.querySelector("#score");
 let questionIndex = 0;
 let highscore = 0;
 let timeleft= 80;
@@ -49,8 +50,16 @@ const questions = [
 ];    
 
 function timer() {
-    timeleft--;
-    timetxt.textContent = timeleft;
+    var timerInterval = setInterval(function() {
+        timeleft--;
+        timetxt.textContent = timeleft;
+
+        if (timeleft <= 0) {
+            clearInterval(timerInterval);
+            window.location.href = "../html/scoreboard.html"; 
+        }
+    }, 1000)
+
 }
 
 function disquestion() {
@@ -60,23 +69,35 @@ function disquestion() {
         var poss = document.createElement('button');
         poss.innerText = qout.a[i];
         atxt.appendChild(poss);
+            if (qout.a[i] == qout.c) {
+                poss.addEventListener("click", pass)
+            } else {
+                poss.addEventListener("click", fail)
+            }         
     }
 }
 
-function checkans() {
-    console.log(1);
+function pass() {
+    highscore = highscore + 2;
+    score.textContent = highscore;
+    newques();
+    }
+function fail() {
+    timeleft = timeleft - 10
+    newques();
 }
-
-var possbtn = document.querySelectorAll("button");
-
 
 function initfunction() {
     timer();
     disquestion();
 }
 
-
-
+function newques() {
+    while (atxt.firstChild) {
+        atxt.removeChild(atxt.firstChild)   
+    }
+    disquestion (); 
+}
 //    // Current Question is
 // questions[questionIndex].q
 // Current answers 
@@ -95,4 +116,3 @@ for (let index = 0; index < questions[questionIndex].a.length; index++) {
 
 window.onload = initfunction;
 
-possbtn.addEventListener("click", checkans);
