@@ -1,10 +1,13 @@
 var timetxt = document.querySelector("#timetxt");
 var qtxt = document.querySelector("#qtxt");
 var atxt = document.querySelector("#atxt");
-var score = document.querySelector("#score");
+var highscore = document.querySelector("#score");
+var int = document.querySelector("#int");
+var sbmt = document.querySelector("#sbmt");
 let questionIndex = 0;
-let highscore = 0;
+let score = 0;
 let timeleft= 80;
+
 
 const questions = [
     {
@@ -56,17 +59,39 @@ function timer() {
 
         if (timeleft <= 0) {
             clearInterval(timerInterval);
-            window.location.href = "../html/scoreboard.html"; 
+            while (atxt.firstChild) {
+                atxt.removeChild(atxt.firstChild)
+            }   
+            recordscore();
         }
     }, 1000)
 
 }
 
+function recordscore() {
+    qtxt.textContent = "Well done, please enter your initials to record your highscore!"
+    var initial = document.createElement("input");
+    initial.setAttribute('type',"text");
+    var submt = document.createElement("button");
+    submt.innerText = "Submit";
+    int.appendChild(initial);
+    sbmt.appendChild(submt);
+    if (int.textContent) {
+        record ();
+    }
+    function record() {
+        localStorage.setItem("Highscore", JSON.stringify(score, initial.value)); 
+    }
+    // window.location.href = "../html/scoreboard.html"; 
+}
+
+
+
 function disquestion() {
     var qout = questions[Math.floor(Math.random()*questions.length)];
     qtxt.textContent = qout.q;
     for (var i = 0; i < qout.a.length; i++) {
-        var poss = document.createElement('button');
+        var poss = document.createElement("button");
         poss.innerText = qout.a[i];
         atxt.appendChild(poss);
             if (qout.a[i] == qout.c) {
@@ -78,8 +103,8 @@ function disquestion() {
 }
 
 function pass() {
-    highscore = highscore + 2;
-    score.textContent = highscore;
+    score = score + 2;
+    highscore.textContent = score;
     newques();
     }
 function fail() {
