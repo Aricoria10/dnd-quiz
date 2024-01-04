@@ -74,18 +74,18 @@ function recordscore() {
     initial.setAttribute('type',"text");
     var submt = document.createElement("button");
     submt.innerText = "Submit";
-    int.appendChild(initial);
     sbmt.appendChild(submt);
-    if (int.textContent) {
-        record ();
-    }
-    function record() {
-        localStorage.setItem("Highscore", JSON.stringify(new Number(score), new String(initial.value))); 
-    }
+    int.appendChild(initial);
+    if (initial == null || initial == "") {
+        preventDefault();
+    }else {
+        record();  
     // window.location.href = "../html/scoreboard.html"; 
+    }
 }
-
-
+function record() {
+    localStorage.setItem("Highscore", JSON.stringify(new Number(score), new String(initial.value))); 
+}
 
 function disquestion() {
     var qout = questions[Math.floor(Math.random()*questions.length)];
