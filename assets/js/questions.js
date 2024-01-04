@@ -80,7 +80,7 @@ function recordscore() {
         record ();
     }
     function record() {
-        localStorage.setItem("Highscore", JSON.stringify(score, initial.value)); 
+        localStorage.setItem("Highscore", JSON.stringify(new Number(score), new String(initial.value))); 
     }
     // window.location.href = "../html/scoreboard.html"; 
 }

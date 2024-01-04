@@ -1,11 +1,16 @@
-Create a list of questions
+# <Dungeons and Dragons Quiz>
 
-add a event listener for pushing button to begin the game and start timer
+## Description
 
-have buttons for each option
+User's can test their knowledge on the world of Dungeons and Dragons. Answering both mechanical and lore questions. For every right answer a user's score will increase, and every wrong answer the user's time left will decrease by 10 seconds. Users will have 80 seconds to finish. And the user's score are recorded to a highscore sheet so they can compare their knowledge with others.
 
-if/else if answered question correctectly reward point to highscor var
+## Usage
 
-if incorrect subtract 10 seconds from timer
+Simply follow the link below and hit start quiz!
 
-once timer is 0, go to high score page
+
+    ```md
+    ![alt text](assets/images/screenshot.png)
+    ```
+
+
